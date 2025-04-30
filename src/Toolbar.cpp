@@ -56,9 +56,6 @@ void Toolbar::onClick(bobcat::Widget* sender) {
     else if (sender == clearButton) {
         action = CLEAR;
     }
-    else if (sender == undoButton) {
-        action = UNDO;
-    }
 
     if (onChangeCb) {
         onChangeCb(this);
@@ -77,33 +74,13 @@ ACTION Toolbar::getAction() const {
 }
 
 Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
-    std::cout << "Loading pencil" << std::endl;
     pencilButton = new Image(x, y, 50, 50, "./assets/pencil.png");
-    std::cout << "Loaded pencil" << std::endl;
-    
-    std::cout << "Loading eraserButton" << std::endl;
     eraserButton = new Image(x, y + 50, 50, 50, "./assets/eraser.png");
-    std::cout << "Loaded eraserButton" << std::endl;
-
-    std::cout << "Loading circleButton" << std::endl;
-    circleButton = new Image(x, y + 100, 50, 50, "./assets/circle.png");
-    std::cout << "Loaded circleButton" << std::endl;
-    
-    std::cout << "Loading triangleButton" << std::endl;        
-    triangleButton = new Image(x, y + 150, 50, 50, "./assets/triangle.png");
-    std::cout << "Loaded triangleButton" << std::endl;
-    
-    std::cout << "Loading rectangleButton" << std::endl;        
-    rectangleButton = new Image(x, y + 200, 50, 50, "./assets/rectangle.png");
-    std::cout << "Loaded rectangleButton" << std::endl;
-    
-    std::cout << "Loading polygonButton" << std::endl;        
-    polygonButton = new Image(x, y + 250, 50, 50, "./assets/polygon.png");
-    std::cout << "Loaded polygonButton" << std::endl;
-    
-    std::cout << "Loading clearButton" << std::endl;        
+    circleButton = new Image(x, y + 100, 50, 50, "./assets/circle.png");      
+    triangleButton = new Image(x, y + 150, 50, 50, "./assets/triangle.png");      
+    rectangleButton = new Image(x, y + 200, 50, 50, "./assets/rectangle.png");     
+    polygonButton = new Image(x, y + 250, 50, 50, "./assets/polygon.png");      
     clearButton = new Image(x, y + 300, 50, 50, "./assets/clear.png");
-    std::cout << "Loaded clearButton" << std::endl;
 
     tool = PENCIL;
     action = NONE;

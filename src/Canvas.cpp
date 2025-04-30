@@ -31,33 +31,6 @@ void Canvas::addPolygon(float x, float y, int sides, float length, float r, floa
     shapes.push_back(POLYGON);
 }
 
-void Canvas::undo() {
-    //
-    if (shapes.size() != 0){
-        if (shapes.back() == PENCIL){
-            points.pop_back();
-            shapes.pop_back();
-        }
-        else if (shapes.back() == CIRCLE){
-            circles.pop_back();
-            shapes.pop_back();
-        }
-        else if (shapes.back() == RECTANGLE){
-            rectangles.pop_back();
-            shapes.pop_back();
-        }
-        else if (shapes.back() == TRIANGLE){
-            triangles.pop_back();
-            shapes.pop_back();
-        }
-        else if (shapes.back() == POLYGON){
-            polygons.pop_back();
-            shapes.pop_back();
-            
-        }
-    }
-}
-
 void Canvas::clear() {
     for (unsigned int i = 0 ; i < points.size(); i++) {
         delete points[i];
