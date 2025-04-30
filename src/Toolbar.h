@@ -1,20 +1,30 @@
-#ifndef TRIANGLE_H
-#define TRIANGLE_H
+#ifndef TOOLBAR_H
+#define TOOLBAR_H
 
-class Triangle {
-    float x;
-    float y;
-    float base;
-    float height;
-    float r;
-    float g;
-    float b;
+#include <bobcat_ui/all.h>
+#include "Enums.h"
+
+class Toolbar : public bobcat::Group {
+    bobcat::Image* pencilButton;
+    bobcat::Image* eraserButton;
+    bobcat::Image* circleButton;
+    bobcat::Image* triangleButton;
+    bobcat::Image* rectangleButton;
+    bobcat::Image* polygonButton;
+    bobcat::Image* clearButton;
+    bobcat::Image* undoButton;
+
+    TOOL tool;
+    ACTION action;
+    void deselectAllTools();
+    void visualizeSelectedTool();
+    void onClick(bobcat::Widget* sender);
 
 public:
-    Triangle();
-    Triangle(float x, float y, float base, float height, float r, float g, float b);
+    Toolbar(int x, int y, int w, int h);
 
-    void draw();
+    TOOL getTool() const;
+    ACTION getAction() const;
 
     friend struct AppTest;
 };

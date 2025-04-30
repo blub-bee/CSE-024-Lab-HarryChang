@@ -1,18 +1,21 @@
-#ifndef COLOR_H
-#define COLOR_H
+#ifndef CIRCLE_H
+#define CIRCLE_H
 
-class Color {
+class Circle {
+    float x;
+    float y;
+    float radius;
     float r;
     float g;
     float b;
 
 public:
-    Color();
-    Color(float r, float g, float b);
+    Circle();
+    Circle(float x, float y, float radius, float r, float g, float b);
 
-    float getR() const;
-    float getG() const;
-    float getB() const;
+    void draw();
+
+    friend struct AppTest;
 };
 
 #endif
