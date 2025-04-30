@@ -27,7 +27,7 @@ LDFLAGS = -lfltk_images -lpng -lz -lfltk_gl -lGLU -lGL -lfltk -lXrender \
 # ==================================== OTHER SETTINGS ===================================== #
 
 LOCAL_DIR := $(PWD)
-BIN_DIR = /tmp/$(LOCAL_BIN_DIR)$(LOCAL_DIR)
+BIN_DIR = $(LOCAL_BIN_DIR)
 
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
@@ -47,8 +47,6 @@ all: $(OUT)
 
 $(OUT): $(OBJ) $(BIN_DIR) $(LOCAL_BIN_DIR)
 	$(CXX) $(OBJ) -o $(OUT) $(LDFLAGS)
-	@rm -f $(LOCAL_BIN_DIR)/$(APP)
-	@ln -s $(OUT) $(LOCAL_BIN_DIR)/$(APP)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(OBJ_DIR) $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
