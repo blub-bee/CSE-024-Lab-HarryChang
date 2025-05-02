@@ -27,7 +27,6 @@ void Application::onCanvasMouseDown(bobcat::Widget* sender, float mx, float my) 
         canvas->addCircle(mx, my, color.getR(), color.getG(), color.getB());
         canvas->redraw();
     }
-
 }
 
 void Application::onCanvasMouseUp(bobcat::Widget* sender, float mx, float my) {
@@ -56,10 +55,7 @@ void Application::onToolbarChange(bobcat::Widget* sender) {
         canvas->clear();
         canvas->redraw();
     }
-    else if (action == UNDO) {
-        canvas->undo();
-        canvas->redraw();
-    }
+
 }
 
 Application::Application() {
