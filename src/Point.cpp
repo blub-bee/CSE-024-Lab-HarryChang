@@ -25,7 +25,7 @@ Point::Point(float x, float y, float r, float g, float b, int size) : Point(x, y
     this->size = size;
 }
 
-void Point::draw() const {
+void Point::draw() {
     glColor3f(r, g, b);
     glPointSize(size);
 
