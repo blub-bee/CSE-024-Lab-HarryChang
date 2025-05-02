@@ -68,10 +68,10 @@ void Toolbar::onClick(bobcat::Widget* sender) {
         action = CLEAR;
     }
     else if (sender == bringToFrontButton) {
-        action = CLEAR;
+        action = FRONT;
     }
     else if (sender == sendToBackButton) {
-        action = CLEAR;
+        action = BACK;
     }
 
     if (onChangeCb) {
@@ -91,15 +91,15 @@ ACTION Toolbar::getAction() const {
 }
 
 Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
-    pencilButton = new Image(x, y, 50, 50, "./assets/pencil.png");
-    eraserButton = new Image(x, y + 50, 50, 50, "./assets/eraser.png");
-    circleButton = new Image(x, y + 100, 50, 50, "./assets/circle.png");      
-    triangleButton = new Image(x, y + 150, 50, 50, "./assets/triangle.png");      
-    rectangleButton = new Image(x, y + 200, 50, 50, "./assets/rectangle.png");     
-    polygonButton = new Image(x, y + 250, 50, 50, "./assets/polygon.png");      
-    clearButton = new Image(x, y + 300, 50, 50, "./assets/clear.png");
-    bringToFrontButton = new Image(x, y + 350, 50, 50, "./assets/bring-to-front.png");
-    sendToBackButton = new Image(x, y + 400, 50, 50, "./assets/send-to-back.png");
+    pencilButton = new Image(x, y, 45, 45, "./assets/pencil.png");
+    eraserButton = new Image(x, y + 45, 45, 45, "./assets/eraser.png");
+    circleButton = new Image(x, y + 90, 45, 45, "./assets/circle.png");      
+    triangleButton = new Image(x, y + 135, 45, 45, "./assets/triangle.png");      
+    rectangleButton = new Image(x, y + 180, 45, 45, "./assets/rectangle.png");     
+    polygonButton = new Image(x, y + 225, 45, 45, "./assets/polygon.png");      
+    clearButton = new Image(x, y + 270, 45, 45, "./assets/clear.png");
+    bringToFrontButton = new Image(x, y + 315, 45, 45, "./assets/bring-to-front.png");
+    sendToBackButton = new Image(x, y + 360, 45, 45, "./assets/send-to-back.png");
 
     tool = PENCIL;
     action = NONE;

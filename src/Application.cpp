@@ -69,7 +69,7 @@ void Application::onToolbarChange(bobcat::Widget* sender) {
 Application::Application() {
     window = new Window(25, 75, 400, 400, "Lecture 19");
 
-    toolbar = new Toolbar(0, 0, 50, 350);
+    toolbar = new Toolbar(2, 0, 45, 350);
     canvas = new Canvas(50, 0, 350, 350);
     colorSelector = new ColorSelector(50, 350, 350, 50);
     colorSelector->box(FL_BORDER_BOX);
