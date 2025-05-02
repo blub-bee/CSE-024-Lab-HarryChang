@@ -20,7 +20,7 @@ Triangle::Triangle(float x, float y, float base, float height, float r, float g,
     this->g = g;
     this->b = b;
 }
-
+A
 void Triangle::draw() {
     glColor3f(r, g, b);
     

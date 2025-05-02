@@ -1,7 +1,9 @@
 #ifndef POLYGON_H
 #define POLYGON_H
 
-class Polygon {
+#include "Shape.h"
+
+class Polygon : public Shape {
     float x;
     float y;
     int sides;

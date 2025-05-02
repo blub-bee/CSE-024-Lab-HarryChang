@@ -27,6 +27,14 @@ void Application::onCanvasMouseDown(bobcat::Widget* sender, float mx, float my) 
         canvas->addCircle(mx, my, color.getR(), color.getG(), color.getB());
         canvas->redraw();
     }
+    else if (tool == TRIANGLE) { 
+        canvas->addTriangle(mx, my, 30, 30, color.getR(), color.getG(), color.getB());
+        canvas->redraw();
+    }
+    else if (tool == POLYGON) { 
+        canvas->addCircle(mx, my, color.getR(), color.getG(), color.getB());
+        canvas->redraw();
+    }
 }
 
 void Application::onCanvasMouseUp(bobcat::Widget* sender, float mx, float my) {

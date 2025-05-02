@@ -23,6 +23,10 @@ public:
 
     void addCircle(float x, float y, float r, float g, float b);
 
+    void addTriangle(float x, float y, float base, float height, float r, float g, float b);
+
+    void addPolygon(float x, float y, int sides, float length, float r, float g, float b);
+
     void clear();
 
     void undo();
