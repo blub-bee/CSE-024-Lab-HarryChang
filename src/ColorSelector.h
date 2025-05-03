@@ -14,6 +14,7 @@ class ColorSelector : public bobcat::Group {
     bobcat::Button* blueButton;
     bobcat::Button* indigoButton;
     bobcat::Button* violetButton;
+    bobcat::Button* rgbColorButton;
 
     Canvas* canvas = nullptr;
 
@@ -23,6 +24,10 @@ class ColorSelector : public bobcat::Group {
     void onClick(bobcat::Widget* sender);
 
 public:
+    float rgbR = 0.0;
+    float rgbG = 0.0;
+    float rgbB = 0.0;
+
     ColorSelector(int x, int y, int w, int h);
 
     Color getColor() const;

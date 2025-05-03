@@ -1,4 +1,8 @@
 #include "ColorSelector.h"
+#include <FL/fl_ask.H>
+#include <FL/Fl_Color_Chooser.H>
+#include <algorithm>
+
 using namespace bobcat;
 
 void ColorSelector::deselectAllColors() {
@@ -9,6 +13,7 @@ void ColorSelector::deselectAllColors() {
     blueButton->label("");
     indigoButton->label("");
     violetButton->label("");
+    rgbColorButton->label("");
 }
 
 void ColorSelector::visualizeSelectedColor() {
@@ -32,6 +37,9 @@ void ColorSelector::visualizeSelectedColor() {
     }
     else if (color == VIOLET) {
         violetButton->label("@+5square");
+    }
+    else if (color == RGB) {
+        rgbColorButton->label("@+5square");
     }
 }
 
@@ -59,6 +67,27 @@ void ColorSelector::onClick(bobcat::Widget* sender) {
     else if (sender == violetButton) {
         color = VIOLET;
     }
+    else if (sender == rgbColorButton) {
+        color = RGB;
+
+        double r = rgbR;
+        double g = rgbG;
+        double b = rgbB;
+
+        if (fl_color_chooser("Pick a color", r, g, b)) {
+            rgbR = static_cast<float>(r);
+            rgbG = static_cast<float>(g);
+            rgbB = static_cast<float>(b);
+
+            rgbColorButton->color(fl_rgb_color(
+                static_cast<unsigned char>(rgbR * 255),
+                static_cast<unsigned char>(rgbG * 255),
+                static_cast<unsigned char>(rgbB * 255)
+            ));
+        } else {
+            color = RED;
+        }
+    }
 
     visualizeSelectedColor();
     redraw();
@@ -68,7 +97,6 @@ void ColorSelector::onClick(bobcat::Widget* sender) {
         canvas->updateSelectedShapeColor(c.getR(), c.getG(), c.getB());
         canvas->redraw();
     }
-
 }
 
 Color ColorSelector::getColor() const {
@@ -93,6 +121,9 @@ Color ColorSelector::getColor() const {
     else if (color == VIOLET) {
         return Color(148/255.0, 0/255.0, 211/255.0);
     }
+    else if (color == RGB) {
+        return Color(rgbR, rgbG, rgbB);
+    }
     else {
         return Color();
     }
@@ -106,8 +137,9 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     blueButton = new Button(x + 200, y, 50, 50, "");
     indigoButton = new Button(x + 250, y, 50, 50, "");
     violetButton = new Button(x + 300, y, 50, 50, "");
+    rgbColorButton = new Button(x + 350, y, 50, 50, "");
 
-    color = RED;
+    color = RED; //default color
 
     redButton->color(fl_rgb_color(255, 0, 0));
     redButton->labelcolor(FL_WHITE);
@@ -133,6 +165,7 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     ON_CLICK(blueButton, ColorSelector::onClick);
     ON_CLICK(indigoButton, ColorSelector::onClick);
     ON_CLICK(violetButton, ColorSelector::onClick);
+    ON_CLICK(rgbColorButton, ColorSelector::onClick);
 }
 
 void ColorSelector::setCanvas(Canvas* c) {
