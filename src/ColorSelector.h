@@ -4,6 +4,7 @@
 #include <bobcat_ui/all.h>
 #include "Color.h"
 #include "Enums.h"
+#include "Canvas.h"
 
 class ColorSelector : public bobcat::Group {
     bobcat::Button* redButton;
@@ -14,6 +15,8 @@ class ColorSelector : public bobcat::Group {
     bobcat::Button* indigoButton;
     bobcat::Button* violetButton;
 
+    Canvas* canvas = nullptr;
+
     COLOR color;
     void deselectAllColors();
     void visualizeSelectedColor();
@@ -23,6 +26,8 @@ public:
     ColorSelector(int x, int y, int w, int h);
 
     Color getColor() const;
+    
+    void setCanvas(Canvas* c);
 
     friend struct AppTest;
 };

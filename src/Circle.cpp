@@ -21,16 +21,31 @@ Circle::Circle(float x, float y, float r, float g, float b) {
     this->b = b; 
 }
 
-void Circle::draw() {
-    glColor3f(r, g, b);
-
-    float inc = M_PI / 32;
-    glBegin(GL_POLYGON);
-        for (float theta = 0; theta <= 2 * M_PI; theta += inc){
-            glVertex2d(x + cos(theta) * radius, y + sin(theta) * radius);
-        }
+void drawHighlight(float x, float y, float radius = 0.05f) {
+    glColor3f(1.0f, 1.0f, 0.0f);
+    glLineWidth(2.5f);
+    float inc = 3.14159f / 32;
+    glBegin(GL_LINE_LOOP);
+    for (float angle = 0; angle < 2 * 3.14159f; angle += inc) {
+        glVertex2f(x + cos(angle) * radius, y + sin(angle) * radius);
+    }
     glEnd();
 }
+
+void Circle::draw() {
+    if (isSelected) {
+        drawHighlight(x, y, radius + 0.02f);  // optional offset
+    }
+
+    glColor3f(r, g, b);
+    float inc = M_PI / 32;
+    glBegin(GL_POLYGON);
+    for (float theta = 0; theta <= 2 * M_PI; theta += inc) {
+        glVertex2d(x + cos(theta) * radius, y + sin(theta) * radius);
+    }
+    glEnd();
+}
+
 
 bool Circle::contains(float mx, float my) {
     float dx = mx - x;

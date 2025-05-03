@@ -16,6 +16,8 @@ void Toolbar::deselectAllTools() {
 
     increaseSizeButton->color(FL_BACKGROUND_COLOR);
     decreaseSizeButton->color(FL_BACKGROUND_COLOR);
+
+    selectorButton->color(FL_BACKGROUND_COLOR);
 }
 
 void Toolbar::visualizeSelectedTool() {
@@ -48,6 +50,9 @@ void Toolbar::visualizeSelectedTool() {
     }
     else if (tool == MINUS) {
         decreaseSizeButton->color(FL_WHITE);
+    }
+    else if (tool == SELECTOR) {
+        selectorButton->color(FL_WHITE);
     }
 }
 
@@ -88,6 +93,9 @@ void Toolbar::onClick(bobcat::Widget* sender) {
     else if (sender == decreaseSizeButton){
         action = DECREASE;
     }
+    else if (sender == selectorButton) {
+        tool = SELECTOR;
+    }
 
     if (onChangeCb) {
         onChangeCb(this);
@@ -106,17 +114,18 @@ ACTION Toolbar::getAction() const {
 }
 
 Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
-    pencilButton = new Image(x, y, 50, 50, "./assets/pencil.png");
-    eraserButton = new Image(x, y + 50, 50, 50, "./assets/eraser.png");
-    circleButton = new Image(x, y + 100, 50, 50, "./assets/circle.png");
-    triangleButton = new Image(x, y + 150, 50, 50, "./assets/triangle.png");
-    rectangleButton = new Image(x, y + 200, 50, 50, "./assets/rectangle.png");
-    polygonButton = new Image(x, y + 250, 50, 50, "./assets/polygon.png");
-    clearButton = new Image(x, y + 300, 50, 50, "./assets/clear.png");
-    bringToFrontButton = new Image(x, y + 350, 50, 50, "./assets/bring-to-front.png");
-    sendToBackButton = new Image(x, y + 400, 50, 50, "./assets/send-to-back.png");
-    increaseSizeButton = new Image(x, y + 450, 50, 50, "./assets/minus.png");
-    decreaseSizeButton = new Image(x, y + 500, 50, 50, "./assets/plus.png");
+    pencilButton        = new Image(x, y +   0, 40, 40, "./assets/pencil.png");
+    eraserButton        = new Image(x, y +  40, 40, 40, "./assets/eraser.png");
+    circleButton        = new Image(x, y +  80, 40, 40, "./assets/circle.png");
+    triangleButton      = new Image(x, y + 120, 40, 40, "./assets/triangle.png");
+    rectangleButton     = new Image(x, y + 160, 40, 40, "./assets/rectangle.png");
+    polygonButton       = new Image(x, y + 200, 40, 40, "./assets/polygon.png");
+    selectorButton      = new Image(x, y + 240, 40, 40, "./assets/mouse.png");
+    clearButton         = new Image(x, y + 280, 40, 40, "./assets/clear.png");
+    bringToFrontButton  = new Image(x, y + 320, 40, 40, "./assets/bring-to-front.png");
+    sendToBackButton    = new Image(x, y + 360, 40, 40, "./assets/send-to-back.png");
+    increaseSizeButton  = new Image(x, y + 400, 40, 40, "./assets/minus.png");
+    decreaseSizeButton  = new Image(x, y + 440, 40, 40, "./assets/plus.png");
 
 
     tool = PENCIL;
@@ -134,6 +143,7 @@ Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
 
     increaseSizeButton->box(FL_BORDER_BOX);
     decreaseSizeButton->box(FL_BORDER_BOX);
+    selectorButton->box(FL_BORDER_BOX);    
 
     visualizeSelectedTool();
 
@@ -150,4 +160,6 @@ Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
 
     ON_CLICK(increaseSizeButton, Toolbar::onClick);
     ON_CLICK(decreaseSizeButton, Toolbar::onClick);
+
+    ON_CLICK(selectorButton, Toolbar::onClick);    
 }

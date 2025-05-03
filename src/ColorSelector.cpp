@@ -62,6 +62,13 @@ void ColorSelector::onClick(bobcat::Widget* sender) {
 
     visualizeSelectedColor();
     redraw();
+
+    if (canvas && canvas->hasSelection()) {
+        Color c = getColor();
+        canvas->updateSelectedShapeColor(c.getR(), c.getG(), c.getB());
+        canvas->redraw();
+    }
+
 }
 
 Color ColorSelector::getColor() const {
@@ -126,4 +133,8 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     ON_CLICK(blueButton, ColorSelector::onClick);
     ON_CLICK(indigoButton, ColorSelector::onClick);
     ON_CLICK(violetButton, ColorSelector::onClick);
+}
+
+void ColorSelector::setCanvas(Canvas* c) {
+    canvas = c;
 }

@@ -5,6 +5,7 @@
 #include "Polygon.h"
 #include <GL/freeglut.h>
 #include <cstdlib>
+#include <algorithm>
 
 Canvas::Canvas(int x, int y, int w, int h) : Canvas_(x, y, w, h) {
     curr = nullptr;
@@ -94,4 +95,46 @@ void Canvas::dragSelectedTo(float newX, float newY){
         selected->move(dx, dy);
         storeLastMouse(newX, newY);
     }
+}
+
+void Canvas::resizeSelected(float factor) {
+    if (selected) {
+        selected->resize(factor);
+    }
+}
+
+void Canvas::changeSelectedColor(float r, float g, float b) {
+    if (selected) {
+        selected->setColor(r, g, b);
+    }
+}
+
+void Canvas::bringSelectedToFront() {
+    if (selected) {
+        auto it = std::find(shapes.begin(), shapes.end(), selected);
+        if (it != shapes.end()) {
+            shapes.erase(it);
+            shapes.push_back(selected);
+        }
+    }
+}
+
+void Canvas::sendSelectedToBack() {
+    if (selected) {
+        auto it = std::find(shapes.begin(), shapes.end(), selected);
+        if (it != shapes.end()) {
+            shapes.erase(it);
+            shapes.insert(shapes.begin(), selected);
+        }
+    }
+}
+
+void Canvas::updateSelectedShapeColor(float r, float g, float b) {
+    if (selected) {
+        selected->setColor(r, g, b);
+    }
+}
+
+bool Canvas::hasSelection() const {
+    return selected != nullptr;
 }

@@ -16,6 +16,7 @@ class Toolbar : public bobcat::Group {
     bobcat::Image* sendToBackButton;
     bobcat::Image* decreaseSizeButton;
     bobcat::Image* increaseSizeButton;
+    bobcat::Image* selectorButton;
 
     TOOL tool;
     ACTION action;

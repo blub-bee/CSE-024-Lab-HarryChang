@@ -57,3 +57,32 @@ float Point::getB() const {
 int Point::getSize() const {
     return size;
 }
+
+bool Point::contains(float mx, float my) {
+    float dx = mx - x;
+    float dy = my - y;
+    float radius = size / 200.0f;
+    return dx * dx + dy * dy <= radius * radius;
+}
+
+void Point::move(float dx, float dy) {
+    x += dx;
+    y += dy;
+}
+
+void Point::resize(float factor) {
+    size = static_cast<int>(size * factor);
+    if (size < 1) size = 1;
+}
+
+void Point::setColor(float newR, float newG, float newB) {
+    r = newR;
+    g = newG;
+    b = newB;
+}
+
+void Point::getColor(float& rOut, float& gOut, float& bOut) const {
+    rOut = r;
+    gOut = g;
+    bOut = b;
+}
