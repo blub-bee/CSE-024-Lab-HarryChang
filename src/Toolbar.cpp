@@ -114,19 +114,18 @@ ACTION Toolbar::getAction() const {
 }
 
 Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
-    pencilButton        = new Image(x, y +   0, 40, 40, "./assets/pencil.png");
-    eraserButton        = new Image(x, y +  40, 40, 40, "./assets/eraser.png");
-    circleButton        = new Image(x, y +  80, 40, 40, "./assets/circle.png");
-    triangleButton      = new Image(x, y + 120, 40, 40, "./assets/triangle.png");
-    rectangleButton     = new Image(x, y + 160, 40, 40, "./assets/rectangle.png");
-    polygonButton       = new Image(x, y + 200, 40, 40, "./assets/polygon.png");
-    selectorButton      = new Image(x, y + 240, 40, 40, "./assets/mouse.png");
-    clearButton         = new Image(x, y + 280, 40, 40, "./assets/clear.png");
-    bringToFrontButton  = new Image(x, y + 320, 40, 40, "./assets/bring-to-front.png");
-    sendToBackButton    = new Image(x, y + 360, 40, 40, "./assets/send-to-back.png");
-    increaseSizeButton  = new Image(x, y + 400, 40, 40, "./assets/minus.png");
-    decreaseSizeButton  = new Image(x, y + 440, 40, 40, "./assets/plus.png");
-
+    pencilButton        = new Image(x, y +   0, 50, 40, "./assets/pencil.png");
+    eraserButton        = new Image(x, y +  40, 50, 40, "./assets/eraser.png");
+    circleButton        = new Image(x, y +  80, 50, 40, "./assets/circle.png");
+    triangleButton      = new Image(x, y + 120, 50, 40, "./assets/triangle.png");
+    rectangleButton     = new Image(x, y + 160, 50, 40, "./assets/rectangle.png");
+    polygonButton       = new Image(x, y + 200, 50, 40, "./assets/polygon.png");
+    selectorButton      = new Image(x, y + 240, 50, 40, "./assets/mouse.png");
+    clearButton         = new Image(x, y + 280, 50, 40, "./assets/clear.png");
+    bringToFrontButton  = new Image(x, y + 320, 50, 40, "./assets/bring-to-front.png");
+    sendToBackButton    = new Image(x, y + 360, 50, 40, "./assets/send-to-back.png");
+    increaseSizeButton  = new Image(x, y + 400, 50, 40, "./assets/minus.png");
+    decreaseSizeButton  = new Image(x, y + 440, 50, 40, "./assets/plus.png");
 
     tool = PENCIL;
     action = NONE;

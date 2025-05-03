@@ -1,5 +1,6 @@
 #include "Application.h"
 #include "Enums.h"
+#include <FL/Enumerations.H>
 #include <bobcat_ui/bobcat_ui.h>
 
 using namespace bobcat;
@@ -97,6 +98,7 @@ Application::Application() {
     window = new Window(25, 75, 550, 550, "Project");
 
     toolbar = new Toolbar(0, 0, 50, 550);
+    toolbar->box(FL_BORDER_BOX);
     canvas = new Canvas(50, 0, 500, 500);
     colorSelector = new ColorSelector(50, 500, 500, 50);
     colorSelector->box(FL_BORDER_BOX);
