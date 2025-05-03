@@ -11,8 +11,9 @@
 
 class Canvas : public bobcat::Canvas_ {
     std::vector<Shape*> shapes;
-
     Scribble* curr;
+    Shape* selected = nullptr;
+    float lastMouseX = 0, lastMouseY = 0;
 
 public:
     Canvas(int x, int y, int w, int h);
@@ -27,9 +28,9 @@ public:
 
     void addPolygon(float x, float y, int sides, float length, float r, float g, float b);
 
-    void clear();
+    void deselectAllShapes();
 
-    void undo();
+    void clear();
 
     void startScribble();
 
@@ -38,6 +39,10 @@ public:
     void endScribble();
 
     void render();
+
+    void selectShapeAt(float x, float y);
+    void storeLastMouse(float x, float y);
+    void dragSelectedTo(float newX, float newY)
 };
 
 #endif

@@ -35,6 +35,11 @@ void Application::onCanvasMouseDown(bobcat::Widget* sender, float mx, float my) 
         canvas->addPolygon(mx, my, 6, 0.1, color.getR(), color.getG(), color.getB());
         canvas->redraw();
     }
+    else if (tool == SELECTOR) {
+        canvas->selectShapeAt(mx, my);
+        canvas->storeLastMouse(mx, my);
+        canvas->redraw();
+    }
 }
 
 void Application::onCanvasMouseUp(bobcat::Widget* sender, float mx, float my) {
@@ -42,6 +47,8 @@ void Application::onCanvasMouseUp(bobcat::Widget* sender, float mx, float my) {
 }
 
 void Application::onCanvasDrag(bobcat::Widget* sender, float mx, float my) {
+    //enum TOOL {PENCIL, ERASER, CIRCLE, TRIANGLE, RECTANGLE, POLYGON, SENDTOFRONT, SENDTOBACK, PLUS, MINUS, SELECTOR};
+
     TOOL tool = toolbar->getTool();
     Color color = colorSelector->getColor();
 
@@ -53,25 +60,38 @@ void Application::onCanvasDrag(bobcat::Widget* sender, float mx, float my) {
         canvas->updateScribble(mx, my, 1.0, 1.0, 1.0, 14);
         canvas->redraw();
     }
+    else if (tool == SELECTOR) {
+        canvas->dragSelectedTo(mx, my);
+        canvas->redraw();
+    }
 }
 
 
 void Application::onToolbarChange(bobcat::Widget* sender) {
     ACTION action = toolbar->getAction();
 
+    //enum ACTION {NONE, CLEAR, FRONT, BACK, INCREASE, DECREASE};
+
     if (action == CLEAR) {
         canvas->clear();
         canvas->redraw();
     }
+    else if (action == INCREASE){
 
+        canvas->redraw();
+    }
+    else if (action == DECREASE){
+
+        canvas->redraw();
+    }
 }
 
 Application::Application() {
-    window = new Window(25, 75, 400, 400, "Lecture 19");
+    window = new Window(25, 75, 550, 550, "Project");
 
-    toolbar = new Toolbar(2, 0, 45, 350);
-    canvas = new Canvas(50, 0, 350, 350);
-    colorSelector = new ColorSelector(50, 350, 350, 50);
+    toolbar = new Toolbar(0, 0, 50, 550);
+    canvas = new Canvas(50, 0, 500, 500);
+    colorSelector = new ColorSelector(50, 500, 500, 50);
     colorSelector->box(FL_BORDER_BOX);
 
     window->add(toolbar);

@@ -8,16 +8,15 @@
 class Shape{
 
 public:
-    // This function is now pure virtual
+    bool isSelected = false;
+
     virtual void draw() = 0;
+    virtual bool contains(float x, float y) = 0;
+    virtual void move(float dx, float dy) = 0;
+    virtual void resize(float factor) = 0;
+    virtual void setColor(float r, float g, float b) = 0;
+    virtual void getColor(float& r, float& g, float& b) const = 0;
 
-    // Since Shape contains at least one pure virtual function
-    // Shape is an Abstract Data Type
-
-    // This forces every child of Shape to have a draw
-    // function implemented
-
-    // Any ADT must have a virtual destructor
     virtual ~Shape(){}
 };
 

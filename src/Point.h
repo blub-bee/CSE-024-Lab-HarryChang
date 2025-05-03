@@ -24,7 +24,7 @@ public:
     float getR() const;
     float getG() const;
     float getB() const;
-    int getSize() const;
+    int getSize() const;   
 };
 
 #endif

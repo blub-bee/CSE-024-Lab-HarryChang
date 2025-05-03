@@ -17,8 +17,6 @@ public:
     Polygon(float x, float y, int sides, float length, float r, float g, float b);
 
     void draw();
-
-    friend struct AppTest;
 };
 
 #endif

@@ -37,13 +37,6 @@ void Canvas::clear() {
     shapes.clear();
 }
 
-void Canvas::undo(){
-    if (shapes.size() > 0){
-        delete shapes[shapes.size() - 1];
-        shapes.pop_back();
-    }
-}
-
 void Canvas::render() {
     for (unsigned int i = 0 ; i < shapes.size(); i++) {
         shapes[i]->draw();
@@ -68,5 +61,37 @@ void Canvas::endScribble(){
     if (curr){
         shapes.push_back(curr);
         curr = nullptr;
+    }
+}
+
+void Canvas::selectShapeAt(float x, float y){
+    selected = nullptr;
+
+    for (int i = shapes.size() - 1; i >= 0; i--){
+        if (shapes[i]->contains(x, y)) {
+            selected = shapes[i];
+            selected->isSelected = true;
+            break;
+        }
+    }
+
+    for (Shape* shape : shapes) {
+        if (shape != selected) {
+            shape->isSelected = false;
+        }
+    }
+}
+
+void Canvas::storeLastMouse(float x, float y) {
+    lastMouseX = x;
+    lastMouseY = y;
+}
+
+void Canvas::dragSelectedTo(float newX, float newY){
+    if (selected) {
+        float dx = newX - lastMouseX;
+        float dy = newY - lastMouseY;
+        selected->move(dx, dy);
+        storeLastMouse(newX, newY);
     }
 }

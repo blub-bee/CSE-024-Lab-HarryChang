@@ -31,3 +31,30 @@ void Circle::draw() {
         }
     glEnd();
 }
+
+bool Circle::contains(float mx, float my) {
+    float dx = mx - x;
+    float dy = my - y;
+    return (dx * dx + dy * dy) <= (radius * radius);
+}
+
+void Circle::move(float dx, float dy){
+    x += dx;
+    y += dy;
+}
+
+void Circle::resize(float factor){
+    radius *= factor;
+}
+
+void Circle::setColor(float newR, float newG, float newB){
+    r = newR;
+    g = newG;
+    b = newB;
+}
+
+void Circle::getColor(float& rOut, float& gOut, float& bOut) const{
+    rOut = r;
+    gOut = g;
+    bOut = b;
+}
