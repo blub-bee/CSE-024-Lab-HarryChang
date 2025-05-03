@@ -58,7 +58,6 @@ void Scribble::move(float dx, float dy) {
 }
 
 void Scribble::resize(float factor) {
-    // Get center of scribble (approximate by average)
     float cx = 0, cy = 0;
     for (Point* pt : points) {
         cx += pt->getX();

@@ -49,7 +49,6 @@ void Polygon::draw() {
 
 
 bool Polygon::contains(float mx, float my) {
-    // Simple bounding circle check
     float dx = mx - x;
     float dy = my - y;
     float radius = length;

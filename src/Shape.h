@@ -4,7 +4,6 @@
 #include <GL/freeglut.h>
 #include <GL/gl.h>
 
-// Abstract Data Type
 class Shape{
 
 public:
