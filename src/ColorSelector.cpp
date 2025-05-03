@@ -156,6 +156,8 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     violetButton->color(fl_rgb_color(148, 0, 211));
     violetButton->labelcolor(FL_WHITE);
 
+    rgbColorButton->labelcolor(FL_WHITE);
+
     visualizeSelectedColor();
 
     ON_CLICK(redButton, ColorSelector::onClick);
