@@ -17,8 +17,6 @@ public:
     Point(float x, float y, float r, float g, float b);
     Point(float x, float y, float r, float g, float b, int size);
 
-    void draw() override;
-
     float getX() const;
     float getY() const;
     float getR() const;
@@ -26,6 +24,7 @@ public:
     float getB() const;
     int getSize() const;
 
+    void draw() override;
     bool contains(float mx, float my) override;
     void move(float dx, float dy) override;
     void resize(float factor) override;

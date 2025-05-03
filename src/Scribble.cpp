@@ -18,7 +18,6 @@ void Scribble::draw() {
             if (y > maxY) maxY = y;
         }
 
-
         glColor3f(1.0f, 1.0f, 0.0f);
         glLineWidth(2.5f);
         glBegin(GL_LINE_LOOP);
@@ -33,7 +32,6 @@ void Scribble::draw() {
         points[i]->draw();
     }
 }
-
 
 Scribble::~Scribble(){
     for (unsigned int i = 0; i < points.size(); i++){

@@ -41,13 +41,21 @@ public:
     void render();
 
     void selectShapeAt(float x, float y);
+
     void storeLastMouse(float x, float y);
+
     void dragSelectedTo(float newX, float newY);
+
     void resizeSelected(float factor);
+
     void changeSelectedColor(float r, float g, float b);
+
     void bringSelectedToFront();
+
     void sendSelectedToBack();
+
     void updateSelectedShapeColor(float r, float g, float b);
+    
     bool hasSelection() const;
 };
 

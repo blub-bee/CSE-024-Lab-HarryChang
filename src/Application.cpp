@@ -95,12 +95,12 @@ void Application::onToolbarChange(bobcat::Widget* sender) {
 
 
 Application::Application() {
-    window = new Window(25, 75, 550, 550, "Project");
+    window = new Window(100, 100, 500, 500, "Project");
 
-    toolbar = new Toolbar(0, 0, 50, 550);
+    toolbar = new Toolbar(0, 0, 50, 500);
     toolbar->box(FL_BORDER_BOX);
-    canvas = new Canvas(50, 0, 500, 500);
-    colorSelector = new ColorSelector(50, 500, 500, 50);
+    canvas = new Canvas(50, 0, 450, 450);
+    colorSelector = new ColorSelector(50, 450, 450, 50);
     colorSelector->box(FL_BORDER_BOX);
     colorSelector->setCanvas(canvas);
 

@@ -10,13 +10,10 @@ void Toolbar::deselectAllTools() {
     triangleButton->color(FL_BACKGROUND_COLOR);
     rectangleButton->color(FL_BACKGROUND_COLOR);
     polygonButton->color(FL_BACKGROUND_COLOR);
-
     bringToFrontButton->color(FL_BACKGROUND_COLOR);
     sendToBackButton->color(FL_BACKGROUND_COLOR);
-
     increaseSizeButton->color(FL_BACKGROUND_COLOR);
     decreaseSizeButton->color(FL_BACKGROUND_COLOR);
-
     selectorButton->color(FL_BACKGROUND_COLOR);
 }
 
@@ -139,7 +136,6 @@ Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
     clearButton->box(FL_BORDER_BOX);
     bringToFrontButton->box(FL_BORDER_BOX);
     sendToBackButton->box(FL_BORDER_BOX);
-
     increaseSizeButton->box(FL_BORDER_BOX);
     decreaseSizeButton->box(FL_BORDER_BOX);
     selectorButton->box(FL_BORDER_BOX);    
@@ -153,12 +149,9 @@ Toolbar::Toolbar(int x, int y, int w, int h) : Group(x, y, w, h) {
     ON_CLICK(rectangleButton, Toolbar::onClick);
     ON_CLICK(polygonButton, Toolbar::onClick);
     ON_CLICK(clearButton, Toolbar::onClick);
-
     ON_CLICK(bringToFrontButton, Toolbar::onClick);
     ON_CLICK(sendToBackButton, Toolbar::onClick);
-
     ON_CLICK(increaseSizeButton, Toolbar::onClick);
     ON_CLICK(decreaseSizeButton, Toolbar::onClick);
-
     ON_CLICK(selectorButton, Toolbar::onClick);    
 }

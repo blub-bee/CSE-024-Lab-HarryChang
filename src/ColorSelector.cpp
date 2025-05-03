@@ -1,4 +1,5 @@
 #include "ColorSelector.h"
+#include <FL/Enumerations.H>
 #include <FL/fl_ask.H>
 #include <FL/Fl_Color_Chooser.H>
 #include <algorithm>
@@ -137,7 +138,7 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     blueButton = new Button(x + 200, y, 50, 50, "");
     indigoButton = new Button(x + 250, y, 50, 50, "");
     violetButton = new Button(x + 300, y, 50, 50, "");
-    rgbColorButton = new Button(x + 350, y, 50, 50, "");
+    rgbColorButton = new Button(x + 350, y, 50, 50, "Custom");
 
     color = RED; //default color
 
@@ -156,6 +157,7 @@ ColorSelector::ColorSelector(int x, int y, int w, int h) : Group(x, y, w, h) {
     violetButton->color(fl_rgb_color(148, 0, 211));
     violetButton->labelcolor(FL_WHITE);
 
+    rgbColorButton->color(fl_rgb_color(0, 0, 0));
     rgbColorButton->labelcolor(FL_WHITE);
 
     visualizeSelectedColor();
