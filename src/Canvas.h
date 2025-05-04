@@ -57,6 +57,8 @@ public:
     void updateSelectedShapeColor(float r, float g, float b);
     
     bool hasSelection() const;
+
+    void deleteSelected();
 };
 
 #endif

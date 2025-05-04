@@ -38,6 +38,17 @@ void Canvas::clear() {
     shapes.clear();
 }
 
+void Canvas::deleteSelected() {
+    if (selected) {
+        auto shape = std::find(shapes.begin(), shapes.end(), selected);
+        if (shape != shapes.end()) {
+            delete *shape;
+            shapes.erase(shape);
+        }
+        selected = nullptr;
+    }
+}
+
 void Canvas::render() {
     for (unsigned int i = 0 ; i < shapes.size(); i++) {
         shapes[i]->draw();
@@ -138,3 +149,4 @@ void Canvas::updateSelectedShapeColor(float r, float g, float b) {
 bool Canvas::hasSelection() const {
     return selected != nullptr;
 }
+
